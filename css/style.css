@@ -31,13 +31,19 @@ header h1 {
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0,05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 }
 
 .map-card h2 {
     margin-bottom: 15px;
     font-size: 1.3rem;
     color: #2d3748
+}
+
+/* Contenedor relativo para posicionar el loader exactamente dentro del mapa */
+.map-wrapper {
+    position: relative;
+    width: 100%;
 }
 
 /*Importante: Leaflet necesita altura definida para renderizarse */
@@ -94,13 +100,20 @@ header h1 {
     background-color: #2b6cb0;
 }
 
-/* Cargador / Loader y Spinner */
-.loader-container {
+/* Cargador / Loader absoluto dentro del recuadro del mapa */
+.map-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.85);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 15px 0;
+    z-index: 1000;
+    border-radius: 6px;
 }
 
 .spinner {
@@ -122,8 +135,6 @@ header h1 {
 .hidden {
     display: none !important;
 }
-
-
     
 
 

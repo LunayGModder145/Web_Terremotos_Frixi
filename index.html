@@ -1,39 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web de Terremotos</title>
     <link rel="stylesheet" href="css/style.css">
     
-    <!--Codigo CSS de Leaflet-->
+    <!-- CSS de Leaflet -->
     <link rel="stylesheet"
      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" 
      crossorigin=""/>
-
 </head>
 <body>
     <header>
        <h1>Monitoreo de Terremotos Globales</h1>
-       <p>Vista de datos sismicos en tiempo real</p>
+       <p>Vista de datos sísmicos en tiempo real</p>
     </header>
+
     <main>
-        <!--Primer Mapa-->
+        <!-- Primer Mapa -->
         <section class="map-card">
             <h2>Mapa General de Terremotos</h2>
-            <div id="map-general" class="map-container"></div>
+            <div class="map-wrapper">
+                <div id="loader-general" class="map-loader hidden">
+                    <div class="spinner"></div>
+                    <p>Cargando datos generales...</p>
+                </div>
+                <div id="map-general" class="map-container"></div>
+            </div>
         </section>
 
-        <!-- Segundo Mapa con Filtros -->
+       <!-- Segundo Mapa con Filtros -->
         <section class="map-card">
-            <h2>2. Mapa Filtrado y Rango de Fechas</h2>
+            <h2>Búsqueda de Terremotos por Fecha y Magnitud:</h2>
 
             <!-- Formulario de Controles -->
             <div class="filter-controls">
                 <div class="input-group">
-                     <label for="min-magnitude">Magnitud Mínima: </label>
+                     <label for="min-magnitude">Magnitud Mínima:</label>
                      <input type="number" id="min-magnitude" min="0" max="10" step="0.5" value="2.5">
+                </div>
+                <div class="input-group">
+                     <label for="max-magnitude">Magnitud Máxima:</label>
+                     <input type="number" id="max-magnitude" min="0" max="10" step="0.5" placeholder="Ej. 10">
                 </div>
                  <div class="input-group">
                      <label for="start-date">Fecha de Inicio:</label>
@@ -46,11 +56,17 @@
                  <button id="apply-filters-btn" type="button">Buscar Terremotos</button>
             </div>
 
-            <div id="map-filtered" class="map-container"></div>
+            <div class="map-wrapper">
+                <div id="loader-filtered" class="map-loader hidden">
+                    <div class="spinner"></div>
+                    <p>Aplicando filtros...</p>
+                </div>
+                <div id="map-filtered" class="map-container"></div>
+            </div>
         </section>
     </main>
 
-    <!--Script de Leaflet-->
+    <!-- Leaflet -->
     <script
        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" 
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" 
