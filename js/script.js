@@ -86,7 +86,7 @@ function dibujarMarcadores(terremotos, capa) {
         // Formateamos la fecha del evento a la localización de España (es-ES)
         const fecha = new Date(propiedades.time).toLocaleString('es-ES');
         
-        // Estructura HTML interna de la ventana emergente (Popup)
+        // Estructura interna de la ventana emergente (Popup)
         const popupContent = `
             <div style="font-size: 0.9rem;">
                 <h4 style="margin-bottom: 5px; color: #1a365d;">${propiedades.title}</h4>
@@ -146,6 +146,17 @@ async function cargarTerremotosFiltrados() {
 
     const startDate = document.getElementById('start-date').value;
     const endDate = document.getElementById('end-date').value;
+
+    // Validaciones de errores situacionales
+    if (minMag && maxMag && parseFloat(minMag) > parseFloat(maxMag)) {
+        alert('La magnitud mínima no puede ser mayor a la magnitud máxima.');
+        return;
+    }
+
+    if (startDate && endDate && new Date(startDate) > new Date(endDate)) {
+        alert('La fecha de inicio no puede ser posterior a la fecha de fin.');
+        return;
+    }
 
     // Construcción dinámica de la URL de consulta según los filtros activos
     let url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson';
