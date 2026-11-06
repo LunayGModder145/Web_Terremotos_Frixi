@@ -158,7 +158,7 @@ async function cargarTerremotosFiltrados() {
         return;
     }
 
-    // Construcción dinámica de la URL de consulta según los filtros activos
+    // Ensambla dinámicamente los parámetros de filtrado en la URL base.
     let url = 'https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson';
     if (minMag) url += `&minmagnitude=${minMag}`;
     if (maxMag) url += `&maxmagnitude=${maxMag}`;
@@ -179,7 +179,7 @@ async function cargarTerremotosFiltrados() {
 
         dibujarMarcadores(data.features, filteredMarkersLayer);
         
-        // Forzamos el reajuste del tamaño del mapa filtrado
+        // Esto fuerza el reajuste del tamaño del mapa filtrado
         if (mapFiltered) mapFiltered.invalidateSize();
 
         if (data.features.length === 0) {
