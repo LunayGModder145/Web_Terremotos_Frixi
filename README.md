@@ -7,9 +7,8 @@ Proyecto desarrollado por **Leonardo Andrés Delgado Rodríguez** como parte del
 ## 🚀 Demo en Vivo
 
 Puedes probar la aplicación desplegada en GitHub Pages:
-👉 [**Ver Aplicación en GitHub Pages**](https://TU_USUARIO.github.io/NOMBRE_DE_TU_REPO/)
+👉 https://lunaygmodder145.github.io/Web_Terremotos_Frixi/
 
-*(Recuerda reemplazar el enlace anterior con tu URL real de GitHub Pages)*
 
 ## 🛠️ Tecnologías Utilizadas
 
