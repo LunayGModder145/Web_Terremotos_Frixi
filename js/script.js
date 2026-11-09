@@ -58,11 +58,6 @@ function getColorByMagnitude(mag) {
     return '#008000';               // Verde (Leve)
 }
 
-/** 
- Procesa la colección de sismos y dibuja círculos huecos proporcionales en la capa indicada.
- @param {Array} terremotos - Array de elementos (features) devueltos por la API
- @param {L.LayerGroup} capa - Capa de Leaflet donde se renderizarán los marcadores.
- */
 function dibujarMarcadores(terremotos, capa) {
     // Limpiamos los marcadores previos para evitar acumulación de datos
     capa.clearLayers();
